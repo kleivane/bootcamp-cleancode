@@ -5,7 +5,7 @@ import java.util.*;
 public class MottakspakkerGenerator {
     
     public Map<String, Set<String>> lagMottakspakker(List<Bootcampdeltaker> bootcampdeltakere){
-        HashMap<String, Set<String>> pakker = new HashMap<>();
+        Map<String, Set<String>> pakker = new HashMap<>();
 
         for (Bootcampdeltaker bootcampdeltaker : bootcampdeltakere) {
 
@@ -16,15 +16,16 @@ public class MottakspakkerGenerator {
         return pakker;
     }
 
+
     private Set<String> genererPakkeinhold(Bootcampdeltaker bootcampdeltaker) {
-        HashSet<String> innhold = new HashSet<>();
+        Set<String> innhold = Collections.emptySet();
         innhold.addAll(hentAvdelingsinnhold(bootcampdeltaker));
         innhold.addAll(hentMaskinpakke(bootcampdeltaker));
         return innhold;
     }
 
     private Set<String> hentMaskinpakke(Bootcampdeltaker bootcampdeltaker) {
-        HashSet<String> maskinpakke = new HashSet<>();
+        Set<String> maskinpakke = Collections.emptySet();
         if (bootcampdeltaker.trengerPc()) {
             maskinpakke.add("PC eller MAC");
         }
@@ -32,7 +33,7 @@ public class MottakspakkerGenerator {
     }
 
     private Set<String> hentAvdelingsinnhold(Bootcampdeltaker bootcampdeltaker) {
-        HashSet<String> avdelingsinnhold = new HashSet<>();
+        Set<String> avdelingsinnhold = Collections.emptySet();
 
         if(bootcampdeltaker.getAvdeling().equals("Tech")){
             avdelingsinnhold.add("Clean Code");
@@ -42,13 +43,14 @@ public class MottakspakkerGenerator {
         return avdelingsinnhold;
     }
 
-    private ArrayList<Bootcampdeltaker> opprettDeltakere() {
-        ArrayList<Bootcampdeltaker> bootcampdeltakere = new ArrayList<>();
 
-        bootcampdeltakere.add(Bootcampdeltaker.deltakerMedPc("Tech", "Tine"));
-        bootcampdeltakere.add(Bootcampdeltaker.deltakerUtenPc("Interactive", "Linda"));
+    private List<Bootcampdeltaker> opprettDeltakere() {
 
-        return bootcampdeltakere;
+        return Arrays.asList(
+                Bootcampdeltaker.deltakerMedPc("Tech", "Tine"),
+                Bootcampdeltaker.deltakerUtenPc("Interactive", "Linda")
+
+        );
     }
 
     public static void main(String[] args) {
