@@ -68,11 +68,11 @@ public class MottakspakkerGenerator {
         private final String avdeling;
 
         public static Bootcampdeltaker deltakerUtenPc(String navn, String avdeling){
-            return new Bootcampdeltaker(avdeling, navn, false);
+            return new Bootcampdeltaker(avdeling, navn, true);
         }
 
         public static Bootcampdeltaker deltakerMedPc(String navn, String avdeling){
-            return new Bootcampdeltaker(avdeling, navn, true);
+            return new Bootcampdeltaker(avdeling, navn, false);
         }
 
         private Bootcampdeltaker(String avdeling, String navn, boolean trengerPc) {
