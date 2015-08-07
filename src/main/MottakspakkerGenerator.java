@@ -18,14 +18,14 @@ public class MottakspakkerGenerator {
 
 
     private Set<String> genererPakkeinhold(Bootcampdeltaker bootcampdeltaker) {
-        Set<String> innhold = Collections.emptySet();
+        Set<String> innhold = new HashSet<>();
         innhold.addAll(hentAvdelingsinnhold(bootcampdeltaker));
         innhold.addAll(hentMaskinpakke(bootcampdeltaker));
         return innhold;
     }
 
     private Set<String> hentMaskinpakke(Bootcampdeltaker bootcampdeltaker) {
-        Set<String> maskinpakke = Collections.emptySet();
+        Set<String> maskinpakke = new HashSet<>();
         if (bootcampdeltaker.trengerPc()) {
             maskinpakke.add("PC eller MAC");
         }
@@ -33,7 +33,7 @@ public class MottakspakkerGenerator {
     }
 
     private Set<String> hentAvdelingsinnhold(Bootcampdeltaker bootcampdeltaker) {
-        Set<String> avdelingsinnhold = Collections.emptySet();
+        Set<String> avdelingsinnhold = new HashSet<>();
 
         if(bootcampdeltaker.getAvdeling().equals("Tech")){
             avdelingsinnhold.add("Clean Code");
@@ -45,10 +45,9 @@ public class MottakspakkerGenerator {
 
 
     private List<Bootcampdeltaker> opprettDeltakere() {
-
         return Arrays.asList(
-                Bootcampdeltaker.deltakerMedPc("Tech", "Tine"),
-                Bootcampdeltaker.deltakerUtenPc("Interactive", "Linda")
+                Bootcampdeltaker.deltakerMedPc("Tine", "Tech"),
+                Bootcampdeltaker.deltakerUtenPc("Linda", "Interactive")
 
         );
     }
